@@ -22,13 +22,13 @@ __extension__
 # 9 "/usr/include/stdio.h" 2 3 4
 # 26 "/usr/include/stdio.h" 3 4
 # 1 "/usr/include/bits/alltypes.h" 1 3 4
-# 50 "/usr/include/bits/alltypes.h" 3 4
-typedef unsigned long size_t;
-# 65 "/usr/include/bits/alltypes.h" 3 4
-typedef long ssize_t;
-# 162 "/usr/include/bits/alltypes.h" 3 4
-typedef long off_t;
-# 320 "/usr/include/bits/alltypes.h" 3 4
+# 73 "/usr/include/bits/alltypes.h" 3 4
+typedef unsigned int size_t;
+# 88 "/usr/include/bits/alltypes.h" 3 4
+typedef int ssize_t;
+# 185 "/usr/include/bits/alltypes.h" 3 4
+typedef long long off_t;
+# 343 "/usr/include/bits/alltypes.h" 3 4
 typedef struct _IO_FILE FILE;
 
 
