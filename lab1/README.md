@@ -15,15 +15,34 @@ TODO
 
 int main() {
     float a, b, c, x;
-    printf("a = "); scanf("%i", &a);
-    printf("b = "); scanf("%i", &b);
-    printf("c = "); scanf("%i", &c);
-    printf("x = "); scanf("%i", &x);
+    printf("a = "); scanf("%f", &a);
+    printf("b = "); scanf("%f", &b);
+    printf("c = "); scanf("%f", &c);
+    printf("x = "); scanf("%f", &x);
     float m = MIN(a, MIN(b, c));
-    if(m <= x && m % 7 == 0) printf("case 1: %i\n", m);
-    else printf("case 2: %i\n", m/(a+b+c-m));
+    if(m <= x && m % 7 == 0) printf("case 1: %f\n", m);
+    else printf("case 2: %f\n", m/(a+b+c-m));
+    return 0;
 }
 ```
 
-## Комментарии к примеру
-TODO
+## Переработанная программа из примера
+```c
+#include <stdio.h>
+
+int main() {
+    float a, b, c;
+    printf("Enter a -> "); scanf("%f", &a);
+    printf("Enter b -> "); scanf("%f", &b);
+    printf("Enter c -> "); scanf("%f", &c);
+    float x = 1.0f;
+    if(!a && !b && !c) return 0;
+    printf("f(x) =");
+    if(a) printf(" %fx^2", a);
+    if(b) {
+        if(b < 0.0f) printf(" - %fx", -b);
+        else printf(" + %fx", b);
+    }
+    if(c) {
+        if(
+```
