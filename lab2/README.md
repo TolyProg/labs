@@ -16,11 +16,12 @@
 Задание по варианту 3:
 
 $$
-f(x)=
+\[ f(x)=
     \begin{cases}
         cos(x)e^{-x^2} & \quad 0<=x<=1
         ln(x+1)-sqrt{4-x^2} & \quad 1<x<=2
     \end{cases}
+\]
 $$
 ## Проделанная работа
 TODO
