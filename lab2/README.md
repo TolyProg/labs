@@ -16,10 +16,11 @@
 Задание по варианту 3:
 
 $$
-f(x)=
+f(x) =
   \begin{cases}
-    cos(x)e^{-x^2} \text{,}       & 0<=x<=1 \\
-    ln(x+1)-\sqrt{4-x^2} \text{,} & 1<x<=2
+    cos(x)e^{-x^2} \text{,}       & 0 \leq x \leq 1 \\
+    ln(x+1)-\sqrt{4-x^2} \text{,} & 1 < x \leq 2
+  \end{cases}
   \end{cases}
 $$
 
