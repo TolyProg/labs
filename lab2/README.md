@@ -18,20 +18,11 @@
 $$
 f(x) =
   \begin{cases}
-    cos(x)e^{-x^2} \text{,}       & 0 \leq x \leq 1 \\
-    ln(x+1)-\sqrt{4-x^2} \text{,} & 1 < x \leq 2
+    cos(x)e^{-x^2} \text{,}       & 0 \leq x \leq 1 \text{;} \\
+    ln(x+1)-\sqrt{4-x^2} \text{,} & 1 < x \leq 2 \text{.}
   \end{cases}
 $$
 
-Test
-
-$$
-f(n) =
-  \begin{cases}
-    n/2       & \text{if } n \text{ is even}\\
-    -(n+1)/2  & \text{if } n \text{ is odd}
-  \end{cases}
-$$
 ## Проделанная работа
 TODO
 ## Скриншот
