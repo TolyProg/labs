@@ -16,23 +16,21 @@
 Задание по варианту 3:
 
 $$
-\[ f(x)=
-    \begin{cases}
-        cos(x)e^{-x^2} & \quad 0<=x<=1\\
-        ln(x+1)-sqrt{4-x^2} & \quad 1<x<=2
-    \end{cases}
-\]
+f(x)=
+  \begin{cases}
+    cos(x)e^{-x^2}      & \quad 0<=x<=1\\
+    ln(x+1)-sqrt{4-x^2} & \quad 1<x<=2
+  \end{cases}
 $$
 
 Test
 
 $$
-\[ f(n) =
+f(n) =
   \begin{cases}
     n/2       & \quad \text{if } n \text{ is even}\\
     -(n+1)/2  & \quad \text{if } n \text{ is odd}
   \end{cases}
-\]
 $$
 ## Проделанная работа
 TODO
