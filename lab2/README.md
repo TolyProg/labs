@@ -36,12 +36,58 @@ f(x) =
 $$
 
 ## Проделанная работа
-TODO
-## Скриншот
-TODO
-## Блок-схема
-TODO
-## График функции
-TODO gnuplot
+1. Написана программа с использованием цикла $while$ (while.c):
+```c
+#include <stdio.h>
+#include <math.h>
+
+float f(float x) {
+    return 0 <= x && x <= 1 ?
+      cos(x)*exp(sqrt(pow(-x,2))) :
+      log(x+1)-sqrt(4-pow(x,2));
+}
+
+int main() {
+    float h, x = 0;
+    printf("введите h> "); scanf("%f", &h);
+    printf("x\t\tf(x)\n");
+    while(x <= 1.0f) {
+        printf("%f\t%f\n", x+h, f(x));
+        x += h;
+    }
+    return 0;
+}
+```
+2. Цикл $while$ заменён на цикл $for$ (for.c):
+```c
+#include <stdio.h>
+#include <math.h>
+
+float f(float x) {
+    return 0 <= x && x <= 1 ?
+      cos(x)*exp(sqrt(pow(-x,2))) :
+      log(x+1)-sqrt(4-pow(x,2));
+}
+
+int main() {
+    float h;
+    printf("введите h> "); scanf("%f", &h);
+    printf("x\t\tf(x)\n");
+    for(float x = 0; x <= 1.0f; x += h)
+        printf("%f\t%f\n", x+h, f(x));
+    return 0;
+}
+```
+Вывод обеих программ совпал.
+
+3. Сделан скриншот:
+![Снимок экрана](screen.png)
+
+4. Сделана блок-схема программ (т.к. программы различаются только синтаксически, их блок-схемы я свёл к одной):
+![Блок схема](schema.jpg)
+
+5. Сделан график функции в gnuplot (файлы plot.gpi, my_graph.txt):
+![График функции](plot.png)
+
 ## Ссылки на используемые материалы
 https://en.wikibooks.org/wiki/LaTeX/Mathematics

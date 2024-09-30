@@ -8,12 +8,10 @@ float f(float x) {
 }
 
 int main() {
-    float h, x = 0;
+    float h;
     printf("введите h> "); scanf("%f", &h);
     printf("x\t\tf(x)\n");
-    while(x <= 1.0f) {
+    for(float x = 0; x <= 1.0f; x += h)
         printf("%f\t%f\n", x+h, f(x));
-        x += h;
-    }
     return 0;
 }
