@@ -1,20 +1,3 @@
-# Лабораторная работа №5
-## Уроки из книги
-### 1
-![](screens/1.png)
-### 2
-![](screens/2.png)
-### 3
-![](screens/3.png)
-## График функции из своего варианта (вариант 3)
-$$
-f(x) =
-  \begin{cases}
-    cos(x)e^{-x^2} \text{,}       & 0 \leq x \leq 1 \text{;} \\
-    ln(x+1)-\sqrt{4-x^2} \text{,} & 1 < x \leq 2 \text{.}
-  \end{cases}
-$$
-```python
 import matplotlib.pyplot as plt
 import numpy as np
 from math import *
@@ -50,5 +33,3 @@ plt.text(0.785, max(y1)+0.01, 'точка касания')
 plt.legend()
 # вывести график
 plt.show()
-```
-![](screens/4.png)
