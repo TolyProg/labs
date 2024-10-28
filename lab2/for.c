@@ -15,6 +15,6 @@ int main() {
     printf("введите h> "); scanf("%f", &h);
     printf("x\t\tf(x)\n");
     for(float x = 0; x <= 2.0f; x += h)
-        printf("%f\t%f\n", x+h, f(x));
+        printf("%f\t%f\n", x+h, f(x, h));
     return 0;
 }
