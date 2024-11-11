@@ -5,23 +5,12 @@ def unpack(n):
     while len(q) > 0:
         n = q[-1]
         del q[-1]
-        print(r, '|||', n)
-        if type(n) == str or type(n) == int:
-            r.append(n)
-            if len(q) < 1: break
-            n = q[-1]
-            del q[-1]
-            continue
-        for x in n:
-            match type(x).__name__:
-                case 'list' | 'tuple' | 'set':
-                    print('lts:', list(x), q)
-                    q.extend(list(x))
-                case 'dict':
-                    q.extend(list(x.keys()))
-                    q.extend(list(x.values()))
-                case _:
-                    r.append(x)
-    return r
+        match type(n).__name__:
+            case 'list' | 'tuple' | 'set': q.extend(n)
+            case 'dict':
+                q.extend(list(n.keys()))
+                q.extend(list(n.values()))
+            case _: r.append(n)
+    return r[::-1]
 
 print(unpack([None, [1, ({2, 3}, {'foo': 'bar'})]]))
