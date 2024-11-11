@@ -1,13 +1,13 @@
 # Лабораторная работа №7
 ## Вариант 3
-### Задача:
+### Задача 1:
 Функция для распаковки списка, содержащего другие объекты (`int`, `str`, `list`, `tuple`, `dict`, `set`) произвольной вложенности.
 ```python
 >>> unpack([None, [1, ({2, 3}, {'foo': 'bar'})]])
 [None, 1, 2, 3, 'foo', 'bar']
 ```
 
-### С рекурсией
+#### С рекурсией
 ```python
 from itertools import chain
 def unpack(x):
@@ -25,9 +25,22 @@ def unpack(x):
 
 print(unpack([None, [1, ({2, 3}, {'foo': 'bar'})]]))
 ```
-![](screens/wi.png)
+![](screens/1wi.png)
 
-### Без рекурсии
+#### Без рекурсии
 ```python
 ```
-![](screens/wo.png)
+![](screens/1wo.png)
+
+### Задача 2
+Функция для расчёта $w_i=w_{i-1}w_{i-2}\frac{(i-1)^2}{(i+1)^3}w_1=0.3,w^2=-1.5$.
+
+#### С рекурсией
+```python
+```
+![](screens/2wi.png)
+
+#### Без рекурсии
+```python
+```
+![](screens/2wo.png)
