@@ -9,6 +9,12 @@ int main() {
     printf("x = "); scanf("%i", &x);
     int m = MIN(a, MIN(b, c));
     if(m <= x && m % 7 == 0) printf("case 1: %i\n", m);
-    else printf("case 2: %f\n", (float)m/(a+b+c-m));
+    else {
+        if(a+b+c-m == 0) {
+            printf("сработала защита от дурака\n");
+            return 1;
+        }
+        printf("case 2: %f\n", (float)m/(a+b+c-m));
+    }
     return 0;
 }
