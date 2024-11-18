@@ -35,9 +35,12 @@ Data list_get(List *l, int i) {
 }
 
 void fill(int n, List *l) {
-    for (int i = 0; i < n; ++i) {
+    printf("fill(%i, &l):\n", n);
+    for(int i = 0; i < n; ++i) {
+        int n = (rand() % 101) - 50;
+        printf("%i: %i\n", i, n);
+        *l = (List){(Data){.tag=INT, .d.i=n}};
         l->next = malloc(sizeof(List));
-        *l->next = (List){(Data){.tag=INT, .d.i=rand() % 101 - 50}};
         l = l->next;
     }
     l->next = NULL;
@@ -45,38 +48,42 @@ void fill(int n, List *l) {
 
 int compute(int n, List *l) {
     /* Найдём 3 максимума и их индексы */
-    int M[3] = {0}, I[3];
+    int M[3] = {-9999, -9999, -9999}, I[3];
     List *p = l;
     for(int i = 0; i < n; ++i) {
-        if(p->data.d.i > *M) {
-            *M = p->data.d.i;
-            *I = i;
+        if(p->data.d.i > M[0]) {
+            M[0] = p->data.d.i;
+            I[0] = i;
         }
-        l = l->next;
+        p = p->next;
     }
     p = l;
     for(int i = 0; i < n; ++i) {
-        if(i == *I) {
-            ++i;
-            if(i >= n) break;
+        if(i == I[0]) {
+            p = p->next;
+            continue;
         }
-        if(p->data.d.i > 1[M]) {
-            *(1+M) = p->data.d.i;
-            1[I] = i;
+        if(p->data.d.i > M[1]) {
+            M[1] = p->data.d.i;
+            I[1] = i;
         }
+        p = p->next;
     }
     p = l;
     for(int i = 0; i < n; ++i) {
-        if(i == *I || i == *(1+I)) {
-            ++i;
-            if(i >= n) break;
+        if(i == I[0] || i == I[1]) {
+            p = p->next;
+            continue;
         }
-        if(p->data.d.i > 2[M]) {
-            *(2+M) = p->data.d.i;
-            2[I] = i;
+        if(p->data.d.i > M[2]) {
+            M[2] = p->data.d.i;
+            I[2] = i;
         }
+        p = p->next;
     }
-    return *M*1[M]*2[M] - ((*I+1[I]+2[I]) % n);
+    printf("compute(): 3 максимума: %i, %i, %i\n", M[0], M[1], M[2]);
+    printf("compute(): их индексы: %i, %i, %i\n", I[0], I[1], I[2]);
+    return M[0]*M[1]*M[2] - ((I[0]+I[1]+I[2]) % n);
 }
 
 int main() {
