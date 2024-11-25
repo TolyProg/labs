@@ -20,9 +20,11 @@ int main() {
 
 На максимальную сложность:
 ```sh
-cc -c hello.c
-ar rcs static.a hello.o # статичная библиотека; файл "static.a"
-cc -shared hello.o -o dynamic.so
+cc -c lib.c
+ar rcs static.a lib.o # статическая библиотека; файл "static.a"
+cc -shared lib.o -o dynamic.so # динамическая библиотека; файл "dynamic.so"
+cc main.c static.a -o static
+cc main.c dynamic.so -o dynamic
 ```
 
 ## Скриншот
