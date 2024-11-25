@@ -43,4 +43,7 @@ f(point_2)
 # False
 # False
 
-
+def test(capfd):
+    f((23, 34))
+    out, err = capfd.readouterr()
+    assert out == 'True\n'

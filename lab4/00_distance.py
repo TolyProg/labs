@@ -24,3 +24,6 @@ for i in names:
     distances[i] = dict((j, dist(i, j)) for j in names)
 
 print(distances)
+
+def test():
+    assert distances == {'Moscow': {'Moscow': 0.0, 'London': 145.60219778561037, 'Paris': 130.38404810405297}, 'London': {'Moscow': 145.60219778561037, 'London': 0.0, 'Paris': 42.42640687119285}, 'Paris': {'Moscow': 130.38404810405297, 'London': 42.42640687119285, 'Paris': 0.0}}

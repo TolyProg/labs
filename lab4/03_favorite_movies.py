@@ -15,7 +15,18 @@ my_favorite_movies = 'Терминатор, Пятый элемент, Ават�
 # Использовать .split() или .find()или другие методы строки нельзя - пользуйтесь только срезами,
 # как указано в задании!
 
-print(my_favorite_movies[:10])
-print(my_favorite_movies[-15:])
-print(my_favorite_movies[12:25])
-print(my_favorite_movies[-22:-17])
+def f():
+    print(my_favorite_movies[:10])
+    print(my_favorite_movies[-15:])
+    print(my_favorite_movies[12:25])
+    print(my_favorite_movies[-22:-17])
+
+f()
+
+def test(capfd):
+    f()
+    out, err = capfd.readouterr()
+    assert out == 'Терминатор\n\
+Назад в будущее\n\
+Пятый элемент\n\
+Чужие\n'
