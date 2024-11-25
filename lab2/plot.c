@@ -16,7 +16,7 @@ float f(float x, float h) {
 #define H 320
 
 #define OX 100
-#define OY H-100
+#define OY H-120
 #define SCALE 100
 
 int main() {
@@ -31,11 +31,11 @@ int main() {
     while(!WindowShouldClose()) {
         BeginDrawing();
         ClearBackground(RAYWHITE);
-        int prevX = OX, prevY = OY;
-        for(float x = 0; x <= 2.0f; x += h) {
-            int tX = OX + x*SCALE;
-            int tY = OY - f(x, h)*SCALE;
-            DrawLine(prevX, prevY, tX, tY, RED);
+        int prevX = 0, prevY = f(0, h)*SCALE;
+        for(float x = 0+h; x <= 2.0f; x += h) {
+            int tX = x*SCALE;
+            int tY = f(x, h)*SCALE;
+            DrawLine(OX+prevX, OY-prevY, OX+tX, OY-tY, RED);
             prevX = tX;
             prevY = tY;
         }
