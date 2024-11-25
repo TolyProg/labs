@@ -157,3 +157,4 @@ int main() {
 
 ## Ссылки на используемые материалы
 https://en.wikibooks.org/wiki/LaTeX/Mathematics
+https://www.raylib.com/cheatsheet/cheatsheet.html
