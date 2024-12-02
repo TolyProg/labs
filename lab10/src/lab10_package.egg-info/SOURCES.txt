@@ -1,0 +1,10 @@
+README.md
+pyproject.toml
+src/lab10_package/lab10_package.py
+src/lab10_package/lab7.py
+src/lab10_package/lab8.py
+src/lab10_package/lab9.py
+src/lab10_package.egg-info/PKG-INFO
+src/lab10_package.egg-info/SOURCES.txt
+src/lab10_package.egg-info/dependency_links.txt
+src/lab10_package.egg-info/top_level.txt
