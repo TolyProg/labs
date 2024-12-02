@@ -62,6 +62,6 @@ classifiers = [
 Homepage = "https://github.com/tolyprog/labs/lab10"
 ```
 
-7. Пакет собран и запущен
+7. Пакет собран
 
 ![](screens/2.png)
