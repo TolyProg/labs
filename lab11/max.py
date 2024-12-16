@@ -1,4 +1,3 @@
-from typing import Union
 from fastapi import FastAPI, Request
 
 app = FastAPI(title="Tic-Tac-Toe")
@@ -16,7 +15,7 @@ def reset(s):
 reset(app.state)
 
 def nextPlayer(s):
-    s.player = 'X' if s.player == 'O' else 'X'
+    s.player = 'X' if s.player == 'O' else 'O'
     return s.player
 
 #def ppBoard(s):
