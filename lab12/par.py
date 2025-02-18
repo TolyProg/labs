@@ -1,4 +1,4 @@
-req = ('a','b','c')
+name = 'Parallelepiped'
 
 def volume(a,b,c):
     return a*b*c

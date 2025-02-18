@@ -1,8 +1,8 @@
 import math
-req = ('r')
+name = 'Sphere'
 
-def surface(r):
+def surface(r,_1,_2):
     return 4*math.pi*(r**2)
 
-def volume(r):
+def volume(r,_1,_2):
     return (4*math.pi*(r**3))/3
