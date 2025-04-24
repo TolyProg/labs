@@ -1,0 +1,46 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "lab13"
+dynamic = ["version"]
+description = 'lab13'
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+keywords = []
+
+dependencies = [
+  "python-docx",
+  "kivy"
+]
+
+[tool.hatch.version]
+path = "src/lab13/__about__.py"
+
+[tool.hatch.envs.types]
+extra-dependencies = [
+  "mypy>=1.0.0",
+]
+[tool.hatch.envs.types.scripts]
+check = "mypy --install-types --non-interactive {args:src/lab13 tests}"
+
+[tool.coverage.run]
+source_pkgs = ["lab13", "tests"]
+branch = true
+parallel = true
+omit = [
+  "src/lab13/__about__.py",
+]
+
+[tool.coverage.paths]
+lab13 = ["src/lab13", "*/lab13/src/lab13"]
+tests = ["tests", "*/lab13/tests"]
+
+[tool.coverage.report]
+exclude_lines = [
+  "no cov",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+]
