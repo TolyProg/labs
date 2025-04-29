@@ -17,19 +17,23 @@ class Empty(Shape.Shape):
     def mass(self):    return 'Not selected'
 selected = Empty(0,0,0,0)
 
-def select(x: str):
+def select(x: str, a, b, c, m):
     global selected
     try:
-        selected = shape_dict[x]
+        selected = shape_dict[x](a,b,c,m)
+        return f'Selected "{x}"'
     except:
         selected = Empty(0,0,0,0)
         return f'Unknown shape "{x}"'
 
 from docx import Document
-def report(a,b,c,m):
-    m = selected.mass(a,b,c,m)
-    v = selected.volume(a,b,c)
-    s = selected.surface(a,b,c)
+def report():
+    a = selected.a
+    b = selected.b
+    c = selected.c
+    m = selected.m
+    v = selected.volume()
+    s = selected.surface()
     d = Document()
     d.add_heading('Отчёт', 0)
     d.add_paragraph(f'Фигура: {selected.name}')

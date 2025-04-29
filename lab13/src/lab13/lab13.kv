@@ -1,58 +1,59 @@
 #:kivy 1.0.9
 
-<TerribleDesign@GridLayout>:
-    cols: 2
-    rows: 7
-    Label:
-        text: 'Shape'
-    TextInput:
-        text: 'Tetrahedron'
-        multiline: 0
-    
-    Label:
-        text: 'a'
-    TextInput:
-        text: '52.261'
-        multiline: 0
-    
-    Label:
-        text: 'b'
-    TextInput:
-        text: '27.638'
-        multiline: 0
-
-    Label:
-        text: 'c'
-    TextInput:
-        text: '22.111'
-        multiline: 0
-    
-    Label:
-        text: 'Material'
-    TextInput:
-        text: 'Glass'
-        multiline: 0
-    
-
-    Button:
-        text: 'Surface'
-        on_press:
-            print('this works')
-    Button:
-        text: 'Volume'
-        on_press:
-            app.test_cb()
-            print('but this does not')
-    Button:
-        text: 'Mass'
-    Button:
-        text: 'Report'
-
-
 GridLayout:
     cols: 1
     rows: 2
-    TerribleDesign:
-        text: 'no comment'
+    GridLayout:
+        cols: 2
+        rows: 7
+        Label:
+            text: 'Shape'
+        TextInput:
+            id: shape
+            text: 'Tetrahedron'
+            multiline: 0
+        
+        Label:
+            text: 'a'
+        TextInput:
+            id: a
+            text: '52.261'
+            multiline: 0
+        
+        Label:
+            text: 'b'
+        TextInput:
+            id: b
+            text: '27.638'
+            multiline: 0
+
+        Label:
+            text: 'c'
+        TextInput:
+            id: c
+            text: '22.111'
+            multiline: 0
+        
+        Label:
+            text: 'Material'
+        TextInput:
+            id: material
+            text: 'Glass'
+            multiline: 0
+        
+
+        Button:
+            text: 'Surface'
+            on_press: app.do('surface')
+        Button:
+            text: 'Volume'
+            on_press: app.do('volume')
+        Button:
+            text: 'Mass'
+            on_press: app.do('mass')
+        Button:
+            text: 'Report'
+            on_press: app.do('report')
     Label:
+        id: out
         text: 'Output'
