@@ -13,9 +13,7 @@
 
 
 ## Скриншоты
+![](diag.png)
 
 
-![diag.png]()
-
-
-![screen.png]()
+![](screen.png)
