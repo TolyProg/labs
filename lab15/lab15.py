@@ -62,6 +62,64 @@ for j in it():
                 cur.execute(fr'INSERT INTO Raw VALUES {tuple(t)}')
                 n = 0
 
-cur.execute('SELECT * FROM Raw'); ic(cur.fetchall())
+# cur.execute('''CREATE TABLE Countries AS
+# SELECT country FROM Raw''')
 
-# TODO: multiple tables (see the task)
+cur.execute('''CREATE TABLE Countries (
+    name TEXT PRIMARY KEY REFERENCES Raw(country),
+    numFly INT
+)''')
+t = {}
+cur.execute('SELECT * FROM Raw')
+for i in cur.fetchall():
+    if i[1] not in t:
+        t[i[1]]=1
+    else: t[i[1]]+=1
+for i in t:
+    cur.execute(f'INSERT INTO Countries VALUES ("{i}", {t[i]})')
+
+cur.execute('''CREATE TABLE Places (
+    name TEXT PRIMARY KEY REFERENCES Raw(place)
+)''')
+t = set()
+cur.execute('SELECT * FROM Raw')
+for i in cur.fetchall():
+    if i[3] not in t:
+        cur.execute(f'INSERT INTO Places VALUES ("{i[3]}")')
+        t.add(i[3])
+
+cur.execute('''CREATE TABLE Machines (
+    name TEXT PRIMARY KEY REFERENCES Raw(name)
+)''')
+t = set()
+cur.execute('SELECT * FROM Raw')
+for i in cur.fetchall():
+    if i[0] not in t:
+        cur.execute(f'INSERT INTO Machines VALUES ("{i[0]}")')
+        t.add(i[0])
+
+cur.execute('SELECT * FROM Raw'); ic(cur.fetchall())
+cur.execute('SELECT * FROM Countries'); ic(cur.fetchall())
+cur.execute('SELECT * FROM Places'); ic(cur.fetchall())
+
+print('топ N стран по числу прилунений')
+cur.execute('SELECT * FROM Countries ORDER BY numFly DESC'); ic(cur.fetchall())
+
+print('Прилунения ССССССССССР:')
+cur.execute('SELECT * FROM Raw WHERE Country="СССР"'); ic(cur.fetchall())
+print('Прилунения Омэрики:')
+cur.execute('SELECT * FROM Raw WHERE Country="США"'); ic(cur.fetchall())
+print('Прилунения Индии:')
+cur.execute('SELECT * FROM Raw WHERE Country="Индия"'); ic(cur.fetchall())
+print('Прилунения Курасавы:')
+cur.execute('SELECT * FROM Raw WHERE Country="Япония"'); ic(cur.fetchall())
+
+cur.execute('SELECT * FROM Places')
+i = map(lambda x: x[0], cur.fetchall())
+for i in i:
+    print(f'Прилунение в {i}')
+    cur.execute(f'SELECT * FROM Raw WHERE place="{i}"')
+    ic(cur.fetchall())
+
+con.commit()
+con.close()
