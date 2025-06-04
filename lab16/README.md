@@ -20,26 +20,27 @@
 q = Query \
     .create_table('Persons') \
     .columns(
-        Column('name', 'TEXT', nullable=False),
-        Column('id', 'INT', nullable=False),
-        Column('location', 'TEXT', nullable=True),
+        Column('author_name', 'TEXT', nullable=False),
+        Column('author_location', 'TEXT', nullable=True),
         Column('url', 'TEXT', nullable=True),
         Column('github', 'TEXT', nullable=True)) \
-    .unique('name') \
-    .primary_key('id')
+    .primary_key('author_name', 'author_location')
 cur.execute(q.get_sql())
 persons = Table('Persons')
 ```
+
 - Projects:
 ```python
 q = Query \
     .create_table('Projects') \
     .columns(
-        Column('author_id', 'INT', nullable=False),
+        Column('author_name', 'TEXT', nullable=False),
+        Column('author_location', 'TEXT', nullable=False),
         Column('year', 'INT', nullable=False),
         Column('name', 'TEXT', nullable=False),
         Column('description', 'TEXT', nullable=False)) \
-    .foreign_key(['author_id'], persons, ['id'])
+    .foreign_key(['author_name', 'author_location'], \
+        persons, ['author_name', 'author_location'])
 cur.execute(q.get_sql())
 projects = Table('Projects')
 ```
