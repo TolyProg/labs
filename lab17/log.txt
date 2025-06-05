@@ -1,0 +1,157 @@
+2025-06-05 23:07:12,577 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-05 23:07:12,578 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("Teachers")
+2025-06-05 23:07:12,578 INFO sqlalchemy.engine.Engine [raw sql] ()
+2025-06-05 23:07:12,578 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("Teachers")
+2025-06-05 23:07:12,578 INFO sqlalchemy.engine.Engine [raw sql] ()
+2025-06-05 23:07:12,578 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("Courses")
+2025-06-05 23:07:12,578 INFO sqlalchemy.engine.Engine [raw sql] ()
+2025-06-05 23:07:12,578 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("Courses")
+2025-06-05 23:07:12,578 INFO sqlalchemy.engine.Engine [raw sql] ()
+2025-06-05 23:07:12,578 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("Students")
+2025-06-05 23:07:12,578 INFO sqlalchemy.engine.Engine [raw sql] ()
+2025-06-05 23:07:12,578 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("Students")
+2025-06-05 23:07:12,578 INFO sqlalchemy.engine.Engine [raw sql] ()
+2025-06-05 23:07:12,579 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("Enrollments")
+2025-06-05 23:07:12,579 INFO sqlalchemy.engine.Engine [raw sql] ()
+2025-06-05 23:07:12,579 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("Enrollments")
+2025-06-05 23:07:12,579 INFO sqlalchemy.engine.Engine [raw sql] ()
+2025-06-05 23:07:12,579 INFO sqlalchemy.engine.Engine 
+CREATE TABLE "Teachers" (
+	id INTEGER NOT NULL, 
+	name VARCHAR NOT NULL, 
+	PRIMARY KEY (id)
+)
+
+
+2025-06-05 23:07:12,579 INFO sqlalchemy.engine.Engine [no key 0.00006s] ()
+2025-06-05 23:07:12,579 INFO sqlalchemy.engine.Engine 
+CREATE TABLE "Students" (
+	id INTEGER NOT NULL, 
+	name VARCHAR NOT NULL, 
+	PRIMARY KEY (id)
+)
+
+
+2025-06-05 23:07:12,579 INFO sqlalchemy.engine.Engine [no key 0.00005s] ()
+2025-06-05 23:07:12,580 INFO sqlalchemy.engine.Engine 
+CREATE TABLE "Courses" (
+	id INTEGER NOT NULL, 
+	name VARCHAR NOT NULL, 
+	teacher_id INTEGER NOT NULL, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(teacher_id) REFERENCES "Teachers" (id)
+)
+
+
+2025-06-05 23:07:12,580 INFO sqlalchemy.engine.Engine [no key 0.00005s] ()
+2025-06-05 23:07:12,580 INFO sqlalchemy.engine.Engine 
+CREATE TABLE "Enrollments" (
+	id INTEGER NOT NULL, 
+	student INTEGER NOT NULL, 
+	course INTEGER NOT NULL, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(student) REFERENCES "Students" (id), 
+	FOREIGN KEY(course) REFERENCES "Courses" (id)
+)
+
+
+2025-06-05 23:07:12,580 INFO sqlalchemy.engine.Engine [no key 0.00005s] ()
+2025-06-05 23:07:12,580 INFO sqlalchemy.engine.Engine COMMIT
+2025-06-05 23:07:12,582 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-06-05 23:07:12,583 INFO sqlalchemy.engine.Engine INSERT INTO "Courses" (name, teacher_id) VALUES (?, ?) RETURNING id
+2025-06-05 23:07:12,583 INFO sqlalchemy.engine.Engine [generated in 0.00011s (insertmanyvalues) 1/7 (ordered; batch not supported)] ('Математический анализ по т. Крузенштерну', 2)
+2025-06-05 23:07:12,583 INFO sqlalchemy.engine.Engine INSERT INTO "Courses" (name, teacher_id) VALUES (?, ?) RETURNING id
+2025-06-05 23:07:12,583 INFO sqlalchemy.engine.Engine [insertmanyvalues 2/7 (ordered; batch not supported)] ('Основы квазиметаморфической гомеоморфной культуры', 1)
+2025-06-05 23:07:12,583 INFO sqlalchemy.engine.Engine INSERT INTO "Courses" (name, teacher_id) VALUES (?, ?) RETURNING id
+2025-06-05 23:07:12,583 INFO sqlalchemy.engine.Engine [insertmanyvalues 3/7 (ordered; batch not supported)] ('Замкнутые суб-антиметапространства ауфидерзейновой геометрии', 4)
+2025-06-05 23:07:12,583 INFO sqlalchemy.engine.Engine INSERT INTO "Courses" (name, teacher_id) VALUES (?, ?) RETURNING id
+2025-06-05 23:07:12,583 INFO sqlalchemy.engine.Engine [insertmanyvalues 4/7 (ordered; batch not supported)] ('Выучи 8 алгоритмов, из них 3 перекрывают остальные', 4)
+2025-06-05 23:07:12,583 INFO sqlalchemy.engine.Engine INSERT INTO "Courses" (name, teacher_id) VALUES (?, ?) RETURNING id
+2025-06-05 23:07:12,583 INFO sqlalchemy.engine.Engine [insertmanyvalues 5/7 (ordered; batch not supported)] ('Выучи 42 определения, сдай, забудь', 4)
+2025-06-05 23:07:12,584 INFO sqlalchemy.engine.Engine INSERT INTO "Courses" (name, teacher_id) VALUES (?, ?) RETURNING id
+2025-06-05 23:07:12,584 INFO sqlalchemy.engine.Engine [insertmanyvalues 6/7 (ordered; batch not supported)] ('Анекдотическая (реальная) логика', 3)
+2025-06-05 23:07:12,584 INFO sqlalchemy.engine.Engine INSERT INTO "Courses" (name, teacher_id) VALUES (?, ?) RETURNING id
+2025-06-05 23:07:12,584 INFO sqlalchemy.engine.Engine [insertmanyvalues 7/7 (ordered; batch not supported)] ('Основы организации отечественных проектных тайм-менеджментных групп с открытым исходным кодом по контролю исполнения надзора над командой специалистов в разработке систем квантового шифрования IP-пакетов для сети из одной и более ЭВМ третьего и старше поколений', 1)
+2025-06-05 23:07:12,584 INFO sqlalchemy.engine.Engine INSERT INTO "Enrollments" (student, course) VALUES (?, ?) RETURNING id
+2025-06-05 23:07:12,585 INFO sqlalchemy.engine.Engine [generated in 0.00008s (insertmanyvalues) 1/19 (ordered; batch not supported)] (1, 0)
+2025-06-05 23:07:12,585 INFO sqlalchemy.engine.Engine INSERT INTO "Enrollments" (student, course) VALUES (?, ?) RETURNING id
+2025-06-05 23:07:12,585 INFO sqlalchemy.engine.Engine [insertmanyvalues 2/19 (ordered; batch not supported)] (1, 1)
+2025-06-05 23:07:12,585 INFO sqlalchemy.engine.Engine INSERT INTO "Enrollments" (student, course) VALUES (?, ?) RETURNING id
+2025-06-05 23:07:12,585 INFO sqlalchemy.engine.Engine [insertmanyvalues 3/19 (ordered; batch not supported)] (1, 2)
+2025-06-05 23:07:12,585 INFO sqlalchemy.engine.Engine INSERT INTO "Enrollments" (student, course) VALUES (?, ?) RETURNING id
+2025-06-05 23:07:12,585 INFO sqlalchemy.engine.Engine [insertmanyvalues 4/19 (ordered; batch not supported)] (1, 3)
+2025-06-05 23:07:12,585 INFO sqlalchemy.engine.Engine INSERT INTO "Enrollments" (student, course) VALUES (?, ?) RETURNING id
+2025-06-05 23:07:12,585 INFO sqlalchemy.engine.Engine [insertmanyvalues 5/19 (ordered; batch not supported)] (1, 4)
+2025-06-05 23:07:12,585 INFO sqlalchemy.engine.Engine INSERT INTO "Enrollments" (student, course) VALUES (?, ?) RETURNING id
+2025-06-05 23:07:12,585 INFO sqlalchemy.engine.Engine [insertmanyvalues 6/19 (ordered; batch not supported)] (1, 5)
+2025-06-05 23:07:12,585 INFO sqlalchemy.engine.Engine INSERT INTO "Enrollments" (student, course) VALUES (?, ?) RETURNING id
+2025-06-05 23:07:12,585 INFO sqlalchemy.engine.Engine [insertmanyvalues 7/19 (ordered; batch not supported)] (1, 6)
+2025-06-05 23:07:12,585 INFO sqlalchemy.engine.Engine INSERT INTO "Enrollments" (student, course) VALUES (?, ?) RETURNING id
+2025-06-05 23:07:12,585 INFO sqlalchemy.engine.Engine [insertmanyvalues 8/19 (ordered; batch not supported)] (2, 1)
+2025-06-05 23:07:12,585 INFO sqlalchemy.engine.Engine INSERT INTO "Enrollments" (student, course) VALUES (?, ?) RETURNING id
+2025-06-05 23:07:12,585 INFO sqlalchemy.engine.Engine [insertmanyvalues 9/19 (ordered; batch not supported)] (2, 2)
+2025-06-05 23:07:12,585 INFO sqlalchemy.engine.Engine INSERT INTO "Enrollments" (student, course) VALUES (?, ?) RETURNING id
+2025-06-05 23:07:12,585 INFO sqlalchemy.engine.Engine [insertmanyvalues 10/19 (ordered; batch not supported)] (2, 3)
+2025-06-05 23:07:12,585 INFO sqlalchemy.engine.Engine INSERT INTO "Enrollments" (student, course) VALUES (?, ?) RETURNING id
+2025-06-05 23:07:12,585 INFO sqlalchemy.engine.Engine [insertmanyvalues 11/19 (ordered; batch not supported)] (2, 4)
+2025-06-05 23:07:12,585 INFO sqlalchemy.engine.Engine INSERT INTO "Enrollments" (student, course) VALUES (?, ?) RETURNING id
+2025-06-05 23:07:12,585 INFO sqlalchemy.engine.Engine [insertmanyvalues 12/19 (ordered; batch not supported)] (2, 5)
+2025-06-05 23:07:12,585 INFO sqlalchemy.engine.Engine INSERT INTO "Enrollments" (student, course) VALUES (?, ?) RETURNING id
+2025-06-05 23:07:12,585 INFO sqlalchemy.engine.Engine [insertmanyvalues 13/19 (ordered; batch not supported)] (3, 0)
+2025-06-05 23:07:12,585 INFO sqlalchemy.engine.Engine INSERT INTO "Enrollments" (student, course) VALUES (?, ?) RETURNING id
+2025-06-05 23:07:12,585 INFO sqlalchemy.engine.Engine [insertmanyvalues 14/19 (ordered; batch not supported)] (3, 5)
+2025-06-05 23:07:12,585 INFO sqlalchemy.engine.Engine INSERT INTO "Enrollments" (student, course) VALUES (?, ?) RETURNING id
+2025-06-05 23:07:12,586 INFO sqlalchemy.engine.Engine [insertmanyvalues 15/19 (ordered; batch not supported)] (4, 0)
+2025-06-05 23:07:12,586 INFO sqlalchemy.engine.Engine INSERT INTO "Enrollments" (student, course) VALUES (?, ?) RETURNING id
+2025-06-05 23:07:12,586 INFO sqlalchemy.engine.Engine [insertmanyvalues 16/19 (ordered; batch not supported)] (4, 2)
+2025-06-05 23:07:12,586 INFO sqlalchemy.engine.Engine INSERT INTO "Enrollments" (student, course) VALUES (?, ?) RETURNING id
+2025-06-05 23:07:12,586 INFO sqlalchemy.engine.Engine [insertmanyvalues 17/19 (ordered; batch not supported)] (4, 3)
+2025-06-05 23:07:12,586 INFO sqlalchemy.engine.Engine INSERT INTO "Enrollments" (student, course) VALUES (?, ?) RETURNING id
+2025-06-05 23:07:12,586 INFO sqlalchemy.engine.Engine [insertmanyvalues 18/19 (ordered; batch not supported)] (4, 4)
+2025-06-05 23:07:12,586 INFO sqlalchemy.engine.Engine INSERT INTO "Enrollments" (student, course) VALUES (?, ?) RETURNING id
+2025-06-05 23:07:12,586 INFO sqlalchemy.engine.Engine [insertmanyvalues 19/19 (ordered; batch not supported)] (4, 5)
+2025-06-05 23:07:12,586 INFO sqlalchemy.engine.Engine INSERT INTO "Students" (name) VALUES (?) RETURNING id
+2025-06-05 23:07:12,586 INFO sqlalchemy.engine.Engine [generated in 0.00005s (insertmanyvalues) 1/5 (ordered; batch not supported)] ('Бедолагин Пыхтун Стараевич',)
+2025-06-05 23:07:12,587 INFO sqlalchemy.engine.Engine INSERT INTO "Students" (name) VALUES (?) RETURNING id
+2025-06-05 23:07:12,587 INFO sqlalchemy.engine.Engine [insertmanyvalues 2/5 (ordered; batch not supported)] ('Неходинский Прогул Незнаевич',)
+2025-06-05 23:07:12,587 INFO sqlalchemy.engine.Engine INSERT INTO "Students" (name) VALUES (?) RETURNING id
+2025-06-05 23:07:12,587 INFO sqlalchemy.engine.Engine [insertmanyvalues 3/5 (ordered; batch not supported)] ('Леньовский Лежун Допускаевич',)
+2025-06-05 23:07:12,587 INFO sqlalchemy.engine.Engine INSERT INTO "Students" (name) VALUES (?) RETURNING id
+2025-06-05 23:07:12,587 INFO sqlalchemy.engine.Engine [insertmanyvalues 4/5 (ordered; batch not supported)] ('Депрессов Устал Помираевич',)
+2025-06-05 23:07:12,587 INFO sqlalchemy.engine.Engine INSERT INTO "Students" (name) VALUES (?) RETURNING id
+2025-06-05 23:07:12,587 INFO sqlalchemy.engine.Engine [insertmanyvalues 5/5 (ordered; batch not supported)] ('Степендов Местозанял Лутаевич',)
+2025-06-05 23:07:12,587 INFO sqlalchemy.engine.Engine INSERT INTO "Teachers" (name) VALUES (?) RETURNING id
+2025-06-05 23:07:12,587 INFO sqlalchemy.engine.Engine [generated in 0.00004s (insertmanyvalues) 1/4 (ordered; batch not supported)] ('Контрпродуктов Квазиморф Антикнович',)
+2025-06-05 23:07:12,587 INFO sqlalchemy.engine.Engine INSERT INTO "Teachers" (name) VALUES (?) RETURNING id
+2025-06-05 23:07:12,587 INFO sqlalchemy.engine.Engine [insertmanyvalues 2/4 (ordered; batch not supported)] ('Всепомнящий Антиян Объяснявич',)
+2025-06-05 23:07:12,587 INFO sqlalchemy.engine.Engine INSERT INTO "Teachers" (name) VALUES (?) RETURNING id
+2025-06-05 23:07:12,587 INFO sqlalchemy.engine.Engine [insertmanyvalues 3/4 (ordered; batch not supported)] ('Практиков Умослав Быстрорешович',)
+2025-06-05 23:07:12,587 INFO sqlalchemy.engine.Engine INSERT INTO "Teachers" (name) VALUES (?) RETURNING id
+2025-06-05 23:07:12,588 INFO sqlalchemy.engine.Engine [insertmanyvalues 4/4 (ordered; batch not supported)] ('Зубриловских Яна Итальяновна',)
+ic| 'СИСТЕМА ПОИСКА СТАТИСТИКИ, ВЫБОРКИ И АНАЛИЗА Квазиметагомеморф-16М-8У-4000 <<Тюльпанчик>> АКТИВИРОВАНА': ('СИСТЕМА ПОИСКА СТАТИСТИКИ, ВЫБОРКИ И АНАЛИЗА Квазиметагомеморф-16М-8У-4000 '
+                                                                                                               '<<Тюльпанчик>> АКТИВИРОВАНА')
+ic| 'КОЛ-ВО КУРСОВ У ПРЕПОДАВАТЛЯ'
+2025-06-05 23:07:12,649 INFO sqlalchemy.engine.Engine SELECT "Teachers".name, count("Courses".id) AS count_1 
+FROM "Teachers" JOIN "Courses" ON "Teachers".id = "Courses".teacher_id GROUP BY "Teachers".id
+2025-06-05 23:07:12,649 INFO sqlalchemy.engine.Engine [generated in 0.00016s] ()
+ic| list(ses.execute(
+        select(Teacher.name, func.count(Course.id)) \
+        .join(Course, Teacher.id == Course.teacher_id) \
+        .group_by(Teacher.id)
+    )): [('Контрпродуктов Квазиморф Антикнович', 2),
+         ('Всепомнящий Антиян Объяснявич', 1),
+         ('Практиков Умослав Быстрорешович', 1),
+         ('Зубриловских Яна Итальяновна', 3)]
+ic| 'КОЛ-ВО КУРСОВ У СТУДЕНТА'
+2025-06-05 23:07:12,653 INFO sqlalchemy.engine.Engine SELECT "Students".name, count(distinct("Enrollments".course)) AS count_1 
+FROM "Students" LEFT OUTER JOIN "Enrollments" ON "Students".id = "Enrollments".student GROUP BY "Students".id
+2025-06-05 23:07:12,653 INFO sqlalchemy.engine.Engine [generated in 0.00014s] ()
+ic| list(ses.execute(
+        select(Student.name, func.count(func.distinct(Enrollment.course))) \
+        .join(Enrollment, Student.id == Enrollment.student, isouter=True) \
+        .group_by(Student.id)
+    )): [('Бедолагин Пыхтун Стараевич', 7),
+         ('Неходинский Прогул Незнаевич', 5),
+         ('Леньовский Лежун Допускаевич', 2),
+         ('Депрессов Устал Помираевич', 5),
+         ('Степендов Местозанял Лутаевич', 0)]
